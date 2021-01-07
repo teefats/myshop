@@ -10,10 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import braintree
+
 from pathlib import Path
 from dotenv import load_dotenv
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,6 +47,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'celery',
+    'payment.apps.PaymentConfig'
     
     
 ]
@@ -124,6 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT =os.path.join(BASE_DIR, 'media/')
@@ -135,3 +144,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 REDIS_HOST = 'localhost'
 REDIS_PORT =6379
 REDIS_DB =0
+
+# Braintree settings
+BRAINTREE_MERCHANT_ID = str(os.getenv('BRAINTREE_MERCHANT_ID')) 
+BRAINTREE_PUBLIC_KEY = str(os.getenv('BRAINTREE_PUBLIC_KEY'))
+BRAINTREE_PRIVATE_KEY = str(os.getenv('BRAINTREE_PRIVATE_KEY')) # Private key
+
+
+BRAINTREE_CONF = braintree.Configuration( braintree.Environment.Sandbox, BRAINTREE_MERCHANT_ID, 
+BRAINTREE_PUBLIC_KEY, BRAINTREE_PRIVATE_KEY)
+
