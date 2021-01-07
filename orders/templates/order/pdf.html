@@ -42,8 +42,9 @@
     </tbody>
   </table>
 
-  <span class="{% if order.paid %}paid{% else %}pending{% endif %}">
-    {% if order.paid %}Paid{% else %}Pending payment{% endif %}
+  <!-- <span class="{% if order.paid %}paid{% else %}pending{% endif %}"> -->
+    <span style="color:green">
+    {% if order.paid %}Paid{% else %}<span style="color:red">Pending payment</span>{% endif %}
   </span>
 </body>
 </html>

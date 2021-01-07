@@ -154,3 +154,12 @@ BRAINTREE_PRIVATE_KEY = str(os.getenv('BRAINTREE_PRIVATE_KEY')) # Private key
 BRAINTREE_CONF = braintree.Configuration( braintree.Environment.Sandbox, BRAINTREE_MERCHANT_ID, 
 BRAINTREE_PUBLIC_KEY, BRAINTREE_PRIVATE_KEY)
 
+# #gmail_send/settings.py
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER ')) 
+# EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD')) #past the key or password app here
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'default from email'
+
