@@ -4,7 +4,6 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.conf import settings
 from orders.models import Order
-
 import os
 from django.conf import settings
 from django.http import HttpResponse
@@ -63,10 +62,10 @@ def payment_completed(order_id):
     # generate PDF
     html = render_to_string('order/pdf.html', {'order': order})
     out = BytesIO()
-    print("ell")
+   
     pisa.CreatePDF(
        html, dest=out, link_callback=link_callback)
-    print("ell")
+ 
     # if pisa_status.err:
     #        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     print("Hello")
